@@ -40,7 +40,7 @@ const MY_SERVICES = [
             "GPS module & sensor calibration issues",
             "Drone camera gimbal & receiver board repair"] },
   { num:"09", icon:"", title:"Light, Sound & Amplifier Board",
-    image:"https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=800&h=500&fit=crop&q=80&auto=format",
+    image:"https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&h=500&fit=crop&q=80&auto=format",
     points:["Audio amplifier IC & output stage repair",
             "DJ lights, LED controllers & stage lighting boards",
             "Digital sound processors & mixer circuits"] }
