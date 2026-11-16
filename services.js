@@ -25,7 +25,7 @@ const MY_SERVICES = [
             "Home Sine-Wave Inverter & Online/Offline UPS",
             "Voltage stabilizer PCB repair"] },
   { num:"06", icon:"", title:"LED / Smart TV & Display Motherboard",
-    image:"https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&h=500&fit=crop&q=80&auto=format",
+    image:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop&q=80&auto=format",
     points:["Chip-level repair of TV motherboards and power supply boards",
             "Standby issues & No-Display fault solutions",
             "BIOS / EMMC software programming"] },
@@ -40,7 +40,7 @@ const MY_SERVICES = [
             "GPS module & sensor calibration issues",
             "Drone camera gimbal & receiver board repair"] },
   { num:"09", icon:"", title:"Light, Sound & Amplifier Board",
-    image:"https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800&h=500&fit=crop&q=80&auto=format",
+    image:"https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=800&h=500&fit=crop&q=80&auto=format",
     points:["Audio amplifier IC & output stage repair",
             "DJ lights, LED controllers & stage lighting boards",
             "Digital sound processors & mixer circuits"] }
