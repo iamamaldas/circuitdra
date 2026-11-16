@@ -10,7 +10,7 @@ const MY_SERVICES = [
             "Top-Load & Front-Load washing machine control boards",
             "Microwave oven control board repair"] },
   { num:"03", icon:"", title:"Lithium Battery BMS & Energy Storage",
-    image:"https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&h=500&fit=crop&q=80&auto=format",
+    image:"https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=800&h=500&fit=crop&q=80&auto=format",
     points:["Dead BMS board repair for EV, E-Bike & Solar lithium batteries",
             "Smart BMS configuration & calibration",
             "Active cell balancing"] },
