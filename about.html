@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Circuit Dr. A</title>
+<meta name="description" content="About Circuit Dr. A — advanced chip-level PCB repair laboratory.">
+<meta name="theme-color" content="#06080f">
+
+<link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+<link rel="icon" type="image/png" sizes="48x48" href="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+<link rel="shortcut icon" type="image/png" href="logo.png">
+<link rel="mask-icon" href="logo.png" color="#00ffb2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0; padding:0; box-sizing:border-box;}
+  :root{
+    --primary:#00ffb2; --cyan:#00d4ff; --violet:#7c5cff;
+    --bg:#06080f; --surface:rgba(16,24,40,0.55);
+    --border:rgba(0,255,178,0.12); --border-hi:rgba(0,255,178,0.4);
+    --text:#e8eef6; --muted:#8b9bb4;
+    --grad-mix:linear-gradient(135deg,#00ffb2,#7c5cff);
+    --grad-text:linear-gradient(120deg,#ffffff,#00ffb2 55%,#00d4ff);
+  }
+  body{
+    background:var(--bg); color:var(--text); line-height:1.75;
+    font-family:'Inter','Segoe UI',Arial,sans-serif; overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(0,255,178,0.09), transparent 42%),
+      radial-gradient(circle at 85% 90%, rgba(124,92,255,0.10), transparent 42%);
+  }
+  a{text-decoration:none; color:inherit;}
+  .container{max-width:900px; margin:0 auto; padding:0 22px;}
+  header{
+    position:sticky; top:0; z-index:100;
+    backdrop-filter:blur(18px); background:rgba(6,8,15,0.75);
+    border-bottom:1px solid var(--border);
+    display:flex; justify-content:center; align-items:center;
+    padding:18px 22px;
+  }
+  .back-btn{
+    position:absolute; left:22px; color:var(--primary);
+    font-size:1.2rem; font-weight:700; transition:0.3s;
+    display:flex; align-items:center; gap:6px;
+  }
+  .back-btn:hover{color:#fff; text-shadow:0 0 12px var(--primary); transform:translateX(-3px);}
+  .back-btn span{font-size:0.9rem;}
+  .brand{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(1.3rem, 3vw, 1.7rem); letter-spacing:-0.4px;
+  }
+  .brand-text{background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .brand-logo{height:clamp(38px, 5vw, 48px); filter:drop-shadow(0 0 12px rgba(0,255,178,0.4));}
+
+  .page-hero{padding:80px 0 40px; text-align:center;}
+  .page-hero h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(1.9rem,4.5vw,2.9rem); font-weight:700; letter-spacing:-1px;
+    background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent;
+    margin-bottom:14px;
+  }
+  .page-hero p{color:var(--muted); max-width:640px; margin:0 auto;}
+
+  .content{padding:20px 0 90px;}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:18px;
+    padding:30px 28px; backdrop-filter:blur(14px); margin-bottom:22px;
+    transition:0.35s;
+  }
+  .card:hover{border-color:var(--border-hi); box-shadow:0 14px 40px rgba(0,0,0,0.4);}
+  .card h2{
+    color:var(--primary); font-size:1.2rem; margin-bottom:14px;
+    font-family:'Space Grotesk',sans-serif; font-weight:600;
+  }
+  .card p, .card li{color:#b9c4d4; font-size:0.96rem; margin-bottom:10px;}
+  .card ul{padding-left:22px; list-style:none;}
+  .card ul li{position:relative; padding-left:18px;}
+  .card ul li::before{
+    content:""; position:absolute; left:0; top:11px;
+    width:7px; height:7px; border-radius:50%;
+    background:var(--primary); box-shadow:0 0 8px var(--primary);
+  }
+
+  footer{border-top:1px solid var(--border); padding:40px 0; text-align:center; background:#04060c;}
+  footer p{color:var(--muted); font-size:0.83rem; line-height:1.9;}
+  footer .links{margin-top:4px;}
+  footer .links a{color:var(--muted); margin:0 8px; font-size:0.85rem; transition:0.3s;}
+  footer .links a:hover{color:var(--primary); text-shadow:0 0 10px rgba(0,255,178,0.5);}
+  footer .copy{color:#6b7789; font-size:0.83rem; margin-top:10px;}
+  footer .copy #year{color:inherit; font-weight:700;}
+
+  .float-wa{
+    position:fixed; bottom:26px; right:26px; width:62px; height:62px; border-radius:50%;
+    background:linear-gradient(135deg,#25D366,#0a8f5b);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.6);
+    z-index:999; animation:pulse-ring 2.2s infinite; transition:transform 0.3s;
+  }
+  .float-wa:hover{transform:scale(1.12);}
+  .float-wa svg{width:34px; height:34px; fill:#fff;}
+  @keyframes pulse-ring{
+    0%{box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.55);}
+    70%{box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 20px rgba(37,211,102,0);}
+    100%{box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  @media(max-width:600px){
+    .back-btn span{display:none;}
+    .back-btn{left:15px; font-size:1.5rem;}
+    .float-wa{width:56px; height:56px; bottom:18px; right:18px;}
+    .float-wa svg{width:30px; height:30px;}
+    .card{padding:24px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-btn">← <span>Back to Home</span></a>
+  <a href="index.html" class="brand">
+    <span class="brand-text">Circuit Dr.</span>
+    <img src="logo.png" alt="A" class="brand-logo">
+  </a>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>About Us</h1>
+    <p>Who we are and what we do.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="card">
+      <h2>Who We Are</h2>
+      <p>Circuit Dr. A is an advanced chip-level PCB repair laboratory. We specialize in repairing — not replacing — electronic control boards used in home appliances, electric vehicles, solar systems, and industrial equipment.</p>
+    </div>
+    <div class="card">
+      <h2>Our Mission</h2>
+      <p>Our mission is to make quality PCB repair accessible and affordable. Instead of forcing customers to buy expensive new boards, we restore the original board at chip level, saving both money and the environment.</p>
+    </div>
+    <div class="card">
+      <h2>What We Repair</h2>
+      <ul>
+        <li>Inverter AC & Refrigerator PCB</li>
+        <li>Washing Machine & Home Appliance PCB</li>
+        <li>Lithium Battery BMS & Energy Storage</li>
+        <li>EV & Automotive Electronics (EV & Auto ECU)</li>
+        <li>Solar Inverter, UPS & Power Backup</li>
+        <li>LED / Smart TV & Display Motherboard</li>
+        <li>Industrial & Commercial Electronics PCB</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Our Promise</h2>
+      <p>Every repaired board is tested and comes with a service warranty. We offer special wholesale rates and priority support for technicians and mechanics through our B2B program.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="links">
+      <a href="about.html">About</a> ·
+      <a href="terms.html">Terms</a> ·
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
+    <p class="copy">© <span id="year">2025</span> Circuit Dr. A. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="float-wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.5c-2.4 0-4.8-.6-6.9-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.4 6-13.4 13.4-13.4s13.4 6 13.4 13.4-6 13.4-13.6 13.1zm7.4-10c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3s1.4 3.9 1.6 4.1c.2.3 2.8 4.3 6.8 6 1 .4 1.7.6 2.3.8.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+<script src="config.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  if (typeof MY_CONFIG !== 'undefined') {
+    const msg = "Hello,\nI would like to repair a PCB at Circuit Dr. A.\nThe problem with my board is: ";
+    document.getElementById("waFloat").href = "https://wa.me/" + MY_CONFIG.whatsapp + "?text=" + encodeURIComponent(msg);
+  }
+</script>
+</body>
+</html>
