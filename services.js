@@ -33,5 +33,15 @@ const MY_SERVICES = [
     image:"https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=800&h=500&fit=crop&q=80&auto=format",
     points:["Induction cookers & inverter welding machines",
             "SMPS power supplies",
-            "All types of custom circuit board repair"] }
+            "All types of custom circuit board repair"] },
+  { num:"08", icon:"", title:"Drone & Flying Car Electronics",
+    image:"https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&h=500&fit=crop&q=80&auto=format",
+    points:["Flight controller, ESC & PDB board repair",
+            "GPS module & sensor calibration issues",
+            "Drone camera gimbal & receiver board repair"] },
+  { num:"09", icon:"", title:"Light, Sound & Amplifier Board",
+    image:"https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800&h=500&fit=crop&q=80&auto=format",
+    points:["Audio amplifier IC & output stage repair",
+            "DJ lights, LED controllers & stage lighting boards",
+            "Digital sound processors & mixer circuits"] }
 ];
