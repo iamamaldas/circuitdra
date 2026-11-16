@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circuit Dr. A — Advanced Chip-Level PCB Repair Lab</title>
+<meta name="description" content="Circuit Dr. A — Chip-level PCB repair lab for Inverter AC, Fridge, Washing Machine, BMS, EV, Solar Inverter, TV. Send board by courier, get repaired with warranty. Contact on WhatsApp.">
+<meta name="theme-color" content="#06080f">
+
+<link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+<link rel="icon" type="image/png" sizes="48x48" href="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+<link rel="shortcut icon" type="image/png" href="logo.png">
+<link rel="mask-icon" href="logo.png" color="#00ffb2">
+
+<meta property="og:title" content="Circuit Dr. A — Chip-Level PCB Repair Lab">
+<meta property="og:description" content="Advanced chip-level PCB repair with warranty.">
+<meta property="og:image" content="logo.png">
+<meta property="og:logo" content="logo.png">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --primary:#00ffb2;
+    --primary-d:#00c98a;
+    --cyan:#00d4ff;
+    --violet:#7c5cff;
+    --bg:#06080f;
+    --bg-2:#0a0f1a;
+    --surface:rgba(16,24,40,0.55);
+    --surface-2:rgba(22,33,52,0.85);
+    --border:rgba(0,255,178,0.12);
+    --border-hi:rgba(0,255,178,0.4);
+    --text:#e8eef6;
+    --muted:#8b9bb4;
+    --grad-main:linear-gradient(135deg,#00ffb2,#00d4ff);
+    --grad-mix:linear-gradient(135deg,#00ffb2,#7c5cff);
+    --grad-text:linear-gradient(120deg,#ffffff 0%,#00ffb2 55%,#00d4ff 100%);
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text); line-height:1.65;
+    font-family:'Inter','Segoe UI',Arial,sans-serif;
+    overflow-x:hidden; position:relative;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(0,255,178,0.10), transparent 40%),
+      radial-gradient(circle at 88% 12%, rgba(124,92,255,0.10), transparent 42%),
+      radial-gradient(circle at 50% 95%, rgba(0,212,255,0.08), transparent 45%);
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(0,255,178,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,178,0.035) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse at center, black 40%, transparent 85%);
+    -webkit-mask-image:radial-gradient(ellipse at center, black 40%, transparent 85%);
+  }
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .container{max-width:1200px; margin:0 auto; padding:0 22px;}
+
+  header{
+    position:sticky; top:0; z-index:100;
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    background:rgba(6,8,15,0.72);
+    border-bottom:1px solid var(--border);
+  }
+  header .container{
+    display:flex; align-items:center; justify-content:center;
+    padding:18px 22px;
+  }
+  .brand{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(1.6rem, 3vw, 2.1rem);
+    letter-spacing:-0.6px;
+  }
+  .brand-text{
+    background:var(--grad-text);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-weight:700;
+  }
+  .brand-logo{
+    height:clamp(48px, 6vw, 64px); width:auto;
+    filter:drop-shadow(0 0 14px rgba(0,255,178,0.45));
+    transition:transform 0.35s ease, filter 0.35s ease;
+  }
+  .brand:hover .brand-logo{transform:rotate(-6deg) scale(1.08); filter:drop-shadow(0 0 22px rgba(0,255,178,0.75));}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:12px 24px; border-radius:40px;
+    font-weight:700; font-size:0.92rem; cursor:pointer;
+    border:none; transition:all 0.3s ease; position:relative; overflow:hidden;
+  }
+  .btn-wa{background:linear-gradient(135deg,#25D366,#0a8f5b); color:#fff;}
+  .btn-wa:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(37,211,102,0.5);}
+  .btn-outline{background:transparent; color:var(--primary); border:1.5px solid var(--primary);}
+  .btn-outline:hover{background:rgba(0,255,178,0.08); box-shadow:0 0 24px rgba(0,255,178,0.3); transform:translateY(-2px);}
+  .wa-svg{width:18px; height:18px; fill:currentColor; flex-shrink:0;}
+
+  .hero{padding:88px 0 60px; text-align:center; position:relative;}
+  .hero .tagline{
+    font-size:clamp(1.4rem, 3.5vw, 2.3rem);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700; line-height:1.2; letter-spacing:-0.8px;
+    margin-bottom:22px;
+    background:var(--grad-text);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 0 40px rgba(0,255,178,0.25));
+  }
+  .hero .tagline b{color:var(--primary); font-weight:700;}
+  .hero p.lead{max-width:720px; margin:0 auto 38px; color:#b9c4d4; font-size:1.03rem;}
+  .hero .buttons{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+
+  .stats{margin-top:64px; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px;}
+  .stat{
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+    padding:22px 14px; backdrop-filter:blur(14px);
+    transition:0.35s;
+  }
+  .stat:hover{transform:translateY(-4px); border-color:var(--border-hi); box-shadow:0 14px 40px rgba(0,0,0,0.4);}
+  .stat .n{font-family:'Space Grotesk',sans-serif; font-size:1.7rem; font-weight:700; background:var(--grad-mix); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .stat .l{font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:1.2px; margin-top:4px;}
+
+  section{padding:88px 0; position:relative;}
+  .sec-head{text-align:center; margin-bottom:56px;}
+  .sec-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.75rem; color:var(--primary); font-weight:700;
+    letter-spacing:3px; text-transform:uppercase; margin-bottom:12px;
+  }
+  .sec-eyebrow::before, .sec-eyebrow::after{
+    content:""; width:24px; height:1px; background:var(--primary); opacity:0.6;
+  }
+  .sec-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(1.7rem,3.8vw,2.6rem);
+    font-weight:700; letter-spacing:-1px; margin-bottom:14px;
+  }
+  .sec-title b{background:var(--grad-main); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:700;}
+  .sec-sub{color:var(--muted); max-width:640px; margin:0 auto; font-size:0.97rem;}
+
+  .services{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:26px;}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:20px;
+    overflow:hidden; backdrop-filter:blur(14px);
+    transition:transform 0.4s ease, border-color 0.3s ease, box-shadow 0.4s ease;
+    display:flex; flex-direction:column;
+  }
+  .card:hover{transform:translateY(-8px); border-color:var(--border-hi); box-shadow:0 22px 60px rgba(0,0,0,0.55), 0 0 40px rgba(0,255,178,0.12);}
+  .card-media{
+    position:relative; height:180px; overflow:hidden;
+    background:linear-gradient(135deg, rgba(0,255,178,0.18), rgba(124,92,255,0.15));
+  }
+  .card-media img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform 0.6s ease;
+    opacity:0.9;
+  }
+  .card:hover .card-media img{transform:scale(1.08);}
+  .card-media::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 30%, rgba(6,8,15,0.85) 100%);
+    pointer-events:none;
+  }
+  .card-media.no-img::before{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(0,255,178,0.35), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(124,92,255,0.3), transparent 60%);
+  }
+  .card-icon{
+    position:absolute; top:14px; left:14px; z-index:2;
+    width:46px; height:46px; border-radius:12px;
+    background:rgba(6,8,15,0.7); backdrop-filter:blur(10px);
+    border:1px solid var(--border-hi);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem; font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--primary);
+  }
+  .num-tag{
+    position:absolute; top:16px; right:16px; z-index:2;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:0.78rem; font-weight:700; color:var(--primary);
+    background:rgba(6,8,15,0.7); padding:3px 10px; border-radius:20px;
+    border:1px solid var(--border);
+    letter-spacing:1px;
+  }
+  .card-body{padding:22px 22px 22px; display:flex; flex-direction:column; flex:1;}
+  .card-body h3{font-family:'Space Grotesk',sans-serif; font-size:1.1rem; color:#fff; margin-bottom:14px; font-weight:600; line-height:1.35;}
+  .card-body ul{list-style:none; font-size:0.87rem; color:#aab5c5; flex:1;}
+  .card-body ul li{padding:6px 0 6px 22px; position:relative;}
+  .card-body ul li::before{
+    content:""; position:absolute; left:4px; top:14px;
+    width:7px; height:7px; border-radius:50%;
+    background:var(--primary); box-shadow:0 0 8px var(--primary);
+  }
+  .card-wa{
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
+    padding:10px 16px;
+    background:rgba(37,211,102,0.1); border:1px solid rgba(37,211,102,0.35);
+    border-radius:30px; font-size:0.82rem; font-weight:700; color:#3ee27a;
+    transition:0.3s; cursor:pointer; align-self:flex-start;
+  }
+  .card-wa:hover{background:#25D366; color:#fff; box-shadow:0 0 22px rgba(37,211,102,0.55);}
+  .card-wa svg{width:14px; height:14px; fill:currentColor;}
+
+  .why-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(270px,1fr)); gap:20px;}
+  .why-item{
+    display:flex; gap:16px; padding:24px;
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:16px; backdrop-filter:blur(14px); transition:0.35s;
+  }
+  .why-item:hover{border-color:var(--border-hi); transform:translateY(-4px); box-shadow:0 14px 40px rgba(0,0,0,0.4);}
+  .why-icon{
+    flex-shrink:0; width:46px; height:46px; border-radius:12px;
+    background:var(--grad-mix); display:flex; align-items:center; justify-content:center;
+    color:#06080f;
+  }
+  .why-icon svg{width:22px; height:22px; fill:#06080f;}
+  .why-item h4{color:#fff; font-size:1rem; margin-bottom:5px; font-weight:600;}
+  .why-item p{color:var(--muted); font-size:0.86rem; line-height:1.55;}
+
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;}
+  .step{
+    background:var(--surface); border:1px solid var(--border); border-radius:18px;
+    padding:32px 24px; text-align:center; backdrop-filter:blur(14px);
+    transition:0.35s; position:relative;
+  }
+  .step:hover{transform:translateY(-6px); border-color:rgba(0,212,255,0.5); box-shadow:0 0 40px rgba(0,212,255,0.15);}
+  .step .num{
+    width:54px; height:54px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.25rem;
+    margin:0 auto 18px; background:var(--grad-main); color:#06080f;
+    box-shadow:0 0 30px rgba(0,255,178,0.4);
+  }
+  .step h4{color:#fff; font-size:1.02rem; margin-bottom:8px; font-weight:600;}
+  .step p{color:var(--muted); font-size:0.86rem;}
+
+  .b2b{
+    background:
+      radial-gradient(circle at 25% 25%, rgba(0,255,178,0.13), transparent 55%),
+      radial-gradient(circle at 75% 75%, rgba(124,92,255,0.13), transparent 55%),
+      var(--bg-2);
+    border:1px solid var(--border); border-radius:28px;
+    padding:64px 32px; margin:0 12px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .b2b::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent, rgba(0,255,178,0.04), transparent);
+    animation:shine 6s infinite;
+  }
+  @keyframes shine{0%{transform:translateX(-100%);} 100%{transform:translateX(100%);}}
+  .b2b h2{
+    font-family:'Space Grotesk',sans-serif; font-size:clamp(1.6rem,3.2vw,2.2rem);
+    color:#fff; margin-bottom:10px; letter-spacing:-0.8px; position:relative;
+  }
+  .b2b h2 b{background:var(--grad-mix); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .b2b .sub{color:var(--muted); margin-bottom:34px; font-size:0.96rem; position:relative;}
+  .b2b-list{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px; max-width:860px; margin:0 auto 38px; text-align:left; position:relative;
+  }
+  .b2b-list div{
+    background:rgba(255,255,255,0.03); border:1px solid var(--border);
+    border-radius:12px; padding:14px 16px; font-size:0.9rem;
+    display:flex; gap:10px; align-items:flex-start;
+  }
+  .b2b-list div .check{
+    flex-shrink:0; width:16px; height:16px; margin-top:3px;
+    color:var(--primary);
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .b2b-list div .check svg{width:16px; height:16px; fill:currentColor;}
+
+  .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px;}
+  .contact-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+    padding:28px 22px; text-align:center; backdrop-filter:blur(14px); transition:0.35s;
+  }
+  .contact-card:hover{border-color:var(--border-hi); transform:translateY(-4px); box-shadow:0 14px 40px rgba(0,0,0,0.4);}
+  .contact-card .ci{
+    width:46px; height:46px; margin:0 auto 14px; border-radius:12px;
+    background:var(--grad-mix); display:flex; align-items:center; justify-content:center;
+  }
+  .contact-card .ci svg{width:22px; height:22px; fill:#06080f;}
+  .contact-card .ct{font-size:0.74rem; text-transform:uppercase; letter-spacing:1.6px; color:var(--muted); margin-bottom:8px;}
+  .contact-card .cv{color:#fff; font-size:0.96rem; font-weight:600; word-break:break-word;}
+  .contact-card a.cv{color:#3ee27a; transition:0.3s;}
+  .contact-card a.cv:hover{text-decoration:underline; text-shadow:0 0 12px rgba(62,226,122,0.6);}
+
+  footer{border-top:1px solid var(--border); padding:40px 0; text-align:center; background:#04060c;}
+  footer p{color:var(--muted); font-size:0.83rem; line-height:1.9;}
+  footer .links{margin-top:4px;}
+  footer .links a{color:var(--muted); margin:0 8px; font-size:0.85rem; transition:0.3s;}
+  footer .links a:hover{color:var(--primary); text-shadow:0 0 10px rgba(0,255,178,0.5);}
+  footer .copy{color:#6b7789; font-size:0.83rem; margin-top:12px;}
+  footer .copy #year{color:inherit; font-weight:700;}
+
+  .float-wa{
+    position:fixed; bottom:26px; right:26px; width:62px; height:62px; border-radius:50%;
+    background:linear-gradient(135deg,#25D366,#0a8f5b);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.6);
+    z-index:999; animation:pulse-ring 2.2s infinite; transition:transform 0.3s;
+  }
+  .float-wa:hover{transform:scale(1.12);}
+  .float-wa svg{width:34px; height:34px; fill:#fff;}
+  @keyframes pulse-ring{
+    0%{box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.55);}
+    70%{box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 20px rgba(37,211,102,0);}
+    100%{box-shadow:0 8px 25px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media(max-width:600px){
+    .hero{padding:56px 0 44px;}
+    header .container{padding:14px 18px;}
+    .float-wa{width:56px; height:56px; bottom:18px; right:18px;}
+    .float-wa svg{width:30px; height:30px;}
+    .card-media{height:160px;}
+    .sec-eyebrow::before, .sec-eyebrow::after{width:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Circuit Dr. A Home">
+      <span class="brand-text">Circuit Dr.</span>
+      <img src="logo.png" alt="A" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="tagline">Don't Replace, <b>Just Repair</b> — your trusted chip-level PCB repair destination</div>
+    <p class="lead">
+      Inverter AC, Refrigerator, Washing Machine, Lithium BMS, EV Controller, Solar Inverter, TV — precision repair for all types of PCBs under one lab.
+      Send your board by courier and get it back repaired with a service warranty.
+    </p>
+    <div class="buttons">
+      <a class="btn btn-wa" id="waHero" href="#" target="_blank" rel="noopener">
+        <svg class="wa-svg" viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.5c-2.4 0-4.8-.6-6.9-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.4 6-13.4 13.4-13.4s13.4 6 13.4 13.4-6 13.4-13.6 13.1zm7.4-10c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3s1.4 3.9 1.6 4.1c.2.3 2.8 4.3 6.8 6 1 .4 1.7.6 2.3.8.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+        Contact on WhatsApp
+      </a>
+      <a class="btn btn-outline" href="#services">View Services →</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">7+</div><div class="l">Categories</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Chip-Level</div></div>
+      <div class="stat"><div class="n">Warranty</div><div class="l">Service Guarantee</div></div>
+      <div class="stat"><div class="n">B2B</div><div class="l">Wholesale Rates</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Our Services</div>
+      <h2 class="sec-title">Our <b>Core Services</b></h2>
+      <p class="sec-sub">Chip-level precision PCB repair across 7 categories</p>
+    </div>
+    <div class="services" id="serviceGrid"></div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Why Choose Us</div>
+      <h2 class="sec-title">Why <b>Choose Us</b></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div><div><h4>Wholesale Rates & Priority B2B</h4><p>Special wholesale rates and priority support for technicians and mechanics.</p></div></div>
+      <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div><div><h4>Service Warranty</h4><p>Every repaired board comes with a reliable service warranty.</p></div></div>
+      <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div><div><h4>Modern Lab Setup</h4><p>Equipped with micro-soldering stations and advanced diagnostic tools.</p></div></div>
+      <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div><div><h4>Nationwide Courier Service</h4><p>Send your board by courier — get it back repaired with warranty.</p></div></div>
+      <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div><div><h4>Free Diagnosis</h4><p>Only a checking fee if not repaired — transparent pricing, no hidden charges.</p></div></div>
+      <div class="why-item"><div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div><div><h4>Chip-Level Expertise</h4><p>Not board replacement — real chip-level repair that saves cost and extends life.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Process</div>
+      <h2 class="sec-title">How It <b>Works</b></h2>
+      <p class="sec-sub">Board repair in just 4 simple steps</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h4>Contact via WhatsApp</h4><p>Send board photos and describe the problem</p></div>
+      <div class="step"><div class="num">2</div><h4>Send the Board</h4><p>Ship the board to us in ESD-safe packaging</p></div>
+      <div class="step"><div class="num">3</div><h4>Approve Quotation</h4><p>We'll send a quotation after diagnosis — approve it</p></div>
+      <div class="step"><div class="num">4</div><h4>Get It Back</h4><p>Repaired + tested + warranty-backed board returned</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:20px 0 80px;">
+  <div class="b2b">
+    <h2>Special Benefits for <b>Technicians & Mechanics</b></h2>
+    <p class="sub">Join as a B2B partner and unlock exclusive perks</p>
+    <div class="b2b-list">
+      <div><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Wholesale rates — repair at lower than retail prices</div>
+      <div><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Priority service — your boards processed first</div>
+      <div><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Bulk repair — special discounts on multiple boards</div>
+      <div><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Dedicated WhatsApp support</div>
+    </div>
+    <a class="btn btn-wa" href="#" onclick="waB2B(); return false;">
+      <svg class="wa-svg" viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4z"/></svg>
+      Become a B2B Partner
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Get in Touch</div>
+      <h2 class="sec-title">Contact <b>Us</b></h2>
+      <p class="sec-sub">For any questions or board repair, message us directly on WhatsApp</p>
+    </div>
+    <div class="contact-grid" id="contactGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="links">
+      <a href="about.html">About</a> ·
+      <a href="terms.html">Terms</a> ·
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
+    <p class="copy">© <span id="year">2025</span> Circuit Dr. A. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="float-wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.5c-2.4 0-4.8-.6-6.9-1.9l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.4 6-13.4 13.4-13.4s13.4 6 13.4 13.4-6 13.4-13.6 13.1zm7.4-10c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.2-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3s1.4 3.9 1.6 4.1c.2.3 2.8 4.3 6.8 6 1 .4 1.7.6 2.3.8.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+<script src="config.js"></script>
+<script src="services.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  });
+
+  window.addEventListener("load", () => {
+    if (typeof MY_CONFIG !== 'undefined') {
+      const NUM = MY_CONFIG.whatsapp;
+      const waLink = m => "https://wa.me/" + NUM + "?text=" + encodeURIComponent(m);
+      const MSG = "Hello,\nI would like to repair a PCB at Circuit Dr. A.\nThe problem with my board is: ";
+
+      const waHero = document.getElementById("waHero");
+      const waFloat = document.getElementById("waFloat");
+      if (waHero) waHero.href = waLink(MSG);
+      if (waFloat) waFloat.href = waLink(MSG);
+
+      window.waService = s => {
+        const msg = "Hello,\nI would like to repair a PCB at Circuit Dr. A related to \"" + s + "\".\nBoard problem: ";
+        window.open(waLink(msg), "_blank", "noopener");
+      };
+      window.waB2B = () => {
+        const msg = "Hello,\nI am a technician. I would like to become a B2B partner of Circuit Dr. A.\nPlease share the wholesale rates and details.";
+        window.open(waLink(msg), "_blank", "noopener");
+      };
+
+      const cg = document.getElementById("contactGrid");
+      if (cg) {
+        const phoneIcon = `<svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>`;
+        const mailIcon = `<svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>`;
+        const pinIcon = `<svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>`;
+        const clockIcon = `<svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>`;
+
+        cg.innerHTML = `
+          <div class="contact-card reveal"><div class="ci">${phoneIcon}</div><div class="ct">WhatsApp / Phone</div><a class="cv" href="${waLink(MSG)}" target="_blank" rel="noopener">${MY_CONFIG.phoneDisplay}</a></div>
+          <div class="contact-card reveal"><div class="ci">${mailIcon}</div><div class="ct">Email</div><a class="cv" href="mailto:${MY_CONFIG.email}">${MY_CONFIG.email}</a></div>
+          <div class="contact-card reveal"><div class="ci">${pinIcon}</div><div class="ct">Lab Address</div><div class="cv">${MY_CONFIG.address}</div></div>
+          <div class="contact-card reveal"><div class="ci">${clockIcon}</div><div class="ct">Hours</div><div class="cv">${MY_CONFIG.hours}</div></div>
+        `;
+      }
+    }
+
+    if (typeof MY_SERVICES !== 'undefined') {
+      const grid = document.getElementById("serviceGrid");
+      if (grid) {
+        MY_SERVICES.forEach(s => {
+          const card = document.createElement("div");
+          card.className = "card reveal";
+          const safeTitle = s.title.replace(/'/g, "\\'");
+          const iconHtml = s.icon ? s.icon : s.num;
+          card.innerHTML = `
+            <div class="card-media">
+              <img src="${s.image}" alt="${s.title}" loading="lazy"
+                   onerror="this.style.display='none'; this.parentElement.classList.add('no-img');">
+              <div class="card-icon">${iconHtml}</div>
+              <span class="num-tag">${s.num}</span>
+            </div>
+            <div class="card-body">
+              <h3>${s.title}</h3>
+              <ul>${s.points.map(p => `<li>${p}</li>`).join("")}</ul>
+              <a class="card-wa" href="#" onclick="waService('${safeTitle}'); return false;">
+                <svg viewBox="0 0 32 32"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4z"/></svg>
+                Contact for this service
+              </a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+    }
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+
+    setTimeout(() => {
+      document.querySelectorAll("section, .card, .why-item, .step, .contact-card, .b2b").forEach(el => {
+        el.classList.add("reveal");
+        io.observe(el);
+      });
+    }, 100);
+  });
+</script>
+</body>
+</html>
