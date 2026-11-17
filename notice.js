@@ -5,7 +5,7 @@
 
 const NOTICE_CONFIG = {
   // Set to true to SHOW the notice, set to false to HIDE it completely
-  isVisible: true, 
+  isVisible: false, 
   
   // The message you want to display to your customers
   text: "📢 Special Notice: Currently, we are only accepting Home Appliance (AC, Fridge, Washing Machine), TV, and Audio Boards. Other services (EV, Drone, Solar) will resume soon.",
