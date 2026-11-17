@@ -1,7 +1,7 @@
 const MY_CONFIG = {
-  whatsapp: "8801XXXXXXXXX",                // your WhatsApp number, country code, no +
-  phoneDisplay: "+880 1XXX-XXXXXX",         // phone shown on site
-  email: "your@email.com",                  // your real email
-  address: "Your Address, City, Country",
+  whatsapp: "6296471636",                // your WhatsApp number, country code, no +
+  phoneDisplay: "+91 0000000000",         // phone shown on site
+  email: "a.contactcare@gmail.com",                  // your real email
+  address: "Kolkata- WB,India",
   hours: "10 AM — 9 PM"
 };
