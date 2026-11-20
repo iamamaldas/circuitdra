@@ -1,47 +1,93 @@
 const MY_SERVICES = [
-  { num:"01", icon:"", title:"Inverter AC & Refrigerator PCB",
-    image:"https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Chip-level repair of Indoor & Outdoor motherboards",
-            "Solutions for Communication Errors and Power Section faults",
-            "IPM Module replacement"] },
-  { num:"02", icon:"", title:"Washing Machine & Home Appliance PCB",
-    image:"https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Repair & re-sealing of Waterproof / Silicon Gel (Potting) boards",
-            "Top-Load & Front-Load washing machine control boards",
-            "Microwave oven control board repair"] },
-  { num:"03", icon:"", title:"Lithium Battery BMS & Energy Storage",
-    image:"https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Dead BMS board repair for EV, E-Bike & Solar lithium batteries",
-            "Smart BMS configuration & calibration",
-            "Active cell balancing"] },
-  { num:"04", icon:"", title:"EV & Automotive Electronics (EV & Auto ECU)",
-    image:"https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Repair of all types of EV chargers and motor controllers",
-            "2-Wheeler, 3-Wheeler & Commercial EVs",
-            "Automotive ECU, digital meters & power converter modules"] },
-  { num:"05", icon:"", title:"Solar Inverter, UPS & Power Backup",
-    image:"https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["On-Grid, Off-Grid & Hybrid solar inverter motherboards",
-            "Home Sine-Wave Inverter & Online/Offline UPS",
-            "Voltage stabilizer PCB repair"] },
-  { num:"06", icon:"", title:"LED / Smart TV & Display Motherboard",
-    image:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Chip-level repair of TV motherboards and power supply boards",
-            "Standby issues & No-Display fault solutions",
-            "BIOS / EMMC software programming"] },
-  { num:"07", icon:"", title:"Industrial & Commercial Electronics PCB",
-    image:"https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Induction cookers & inverter welding machines",
-            "SMPS power supplies",
-            "All types of custom circuit board repair"] },
-  { num:"08", icon:"", title:"Drone & Flying Car Electronics",
-    image:"https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Flight controller, ESC & PDB board repair",
-            "GPS module & sensor calibration issues",
-            "Drone camera gimbal & receiver board repair"] },
-  { num:"09", icon:"", title:"Light, Sound & Amplifier Board",
-    image:"https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&h=500&fit=crop&q=80&auto=format",
-    points:["Audio amplifier IC & output stage repair",
-            "DJ lights, LED controllers & stage lighting boards",
-            "Digital sound processors & mixer circuits"] }
+  // ===== ACTIVE NOW — EV =====
+  {
+    num: "01",
+    icon: "",
+    title: "EV Motor Controller & ECU Repair",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop&q=80&auto=format",
+    status: "active",
+    points: [
+      "2-Wheeler, 3-Wheeler & Commercial EV controllers",
+      "Chip-level repair of MOSFET, gate driver & MCU section",
+      "Fault diagnosis for no-power, jerking & overheat issues"
+    ]
+  },
+  {
+    num: "02",
+    icon: "",
+    title: "EV Lithium Battery BMS Repair",
+    image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=800&h=500&fit=crop&q=80&auto=format",
+    status: "active",
+    points: [
+      "Dead BMS board repair for E-Bike, E-Scooter & Solar lithium packs",
+      "Smart BMS configuration & cell balancing calibration",
+      "Communication fault (CAN/UART) troubleshooting"
+    ]
+  },
+  {
+    num: "03",
+    icon: "",
+    title: "EV Charger & Power Converter PCB",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop&q=80&auto=format",
+    status: "active",
+    points: [
+      "On-board & portable EV charger PCB repair",
+      "DC-DC converter & SMPS power section repair",
+      "Display, meter & charging port board faults"
+    ]
+  },
+  {
+    num: "04",
+    icon: "",
+    title: "EV Service Care (Pickup → Repair → Return)",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&q=80&auto=format",
+    status: "active",
+    points: [
+      "Doorstep pickup & ESD-safe courier service",
+      "Free diagnosis + WhatsApp quotation approval",
+      "Tested, warranty-backed board return"
+    ]
+  },
+
+  // ===== COMING SOON — DRONE =====
+  {
+    num: "05",
+    icon: "",
+    title: "Drone & UAV Electronics",
+    image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&h=500&fit=crop&q=80&auto=format",
+    status: "soon",
+    points: [
+      "Flight controller, ESC & PDB board repair",
+      "GPS module & sensor calibration",
+      "Camera gimbal & receiver board repair"
+    ]
+  },
+
+  // ===== COMING SOON — FLYING CAR / eVTOL =====
+  {
+    num: "06",
+    icon: "",
+    title: "Flying Car / eVTOL Electronics",
+    image: "https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=800&h=500&fit=crop&q=80&auto=format",
+    status: "soon",
+    points: [
+      "eVTOL prototype motor controller & power distribution boards",
+      "Flight computer & sensor interface repair",
+      "Battery management & charging system PCB"
+    ]
+  },
+
+  // ===== COMING SOON — HOME APPLIANCE =====
+  {
+    num: "07",
+    icon: "",
+    title: "Home Appliance PCB (AC, Fridge, Washing Machine)",
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=500&fit=crop&q=80&auto=format",
+    status: "soon",
+    points: [
+      "Inverter AC & Refrigerator motherboard repair",
+      "Washing machine control board & waterproof potting repair",
+      "Microwave & small appliance boards"
+    ]
+  }
 ];
