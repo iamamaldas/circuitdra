@@ -1,26 +1,17 @@
 /* ========================================================
    NOTICE BANNER CONFIGURATION
-   Change the text, colors, or visibility of your notice here.
    ======================================================== */
 
 const NOTICE_CONFIG = {
-  // Set to true to SHOW the notice, set to false to HIDE it completely
-  isVisible: false, 
-  
-  // The message you want to display to your customers
-  text: "📢 Special Notice: Currently, we are only accepting Home Appliance (AC, Fridge, Washing Machine), TV, and Audio Boards. Other services (EV, Drone, Solar) will resume soon.",
-  
-  // The background color of the notice box
+  isVisible: true,
+  text: "🚀 Now Live: EV Motor Controller, BMS, Charger PCB & Service Care. Drone & Flying Car (eVTOL) repair coming soon!",
   bgColor: "rgba(0, 255, 178, 0.1)",
-  
-  // The text color
   textColor: "#00ffb2"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!NOTICE_CONFIG.isVisible) return;
 
-  // Generate the HTML for the notice banner
   const noticeHTML = `
     <div id="customNoticeBanner" style="
       background: ${NOTICE_CONFIG.bgColor};
@@ -40,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  // Insert the notice immediately after the header
   const header = document.querySelector('header');
   if (header) {
     header.insertAdjacentHTML('afterend', noticeHTML);
